@@ -3,7 +3,9 @@ package com.gildedrose;
 import java.util.List;
 
 public class GildedRoseRefactored {
-    List<Item> items;
+
+
+    private final List<Item> items;
 
     public GildedRoseRefactored(List<Item> items) {
         this.items = items;
@@ -12,20 +14,22 @@ public class GildedRoseRefactored {
     public void updateQuality() {
         for (Item item : items) {
 
-            if (isNormalItem(item)) {
-                updateNormalItem(item);
-            }
+            switch (item.name) {
+                case "Aged Brie":
+                    udpateAgedBrie(item);
+                    break;
 
-            if (item.name.equals("Aged Brie")) {
-                udpateAgedBrie(item);
-            }
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    updateBackstage(item);
+                    break;
 
-            if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                updateBackstage(item);
-            }
+                case "Sulfuras, Hand of Ragnaros":
+                    // Do Nothing
+                    break;
 
-            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                updateSulfuras(item);
+                default:
+                    updateDefaultItem(item);
+
             }
         }
     }
@@ -53,7 +57,7 @@ public class GildedRoseRefactored {
         }
     }
 
-    private void updateNormalItem(Item item) {
+    private void updateDefaultItem(Item item) {
         item.sellIn = item.sellIn - 1;
         if(item.quality >0) {
             item.quality = item.quality - 1;
@@ -73,13 +77,5 @@ public class GildedRoseRefactored {
             item.quality = item.quality + 1;
         }
     }
-
-    private void updateSulfuras(Item item) {
-    }
-
-    private boolean isNormalItem(Item item) {
-        return !item.name.equals("Sulfuras, Hand of Ragnaros") && !item.name.equals("Backstage passes to a TAFKAL80ETC concert") && !item.name.equals("Aged Brie");
-    }
-
 
 }
