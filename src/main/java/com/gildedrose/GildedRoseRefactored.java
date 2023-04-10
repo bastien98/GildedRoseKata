@@ -1,11 +1,11 @@
 package com.gildedrose;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GildedRoseRefactored {
     List<Item> items;
-    public GildedRoseRefactored(List<Item>items) {
+
+    public GildedRoseRefactored(List<Item> items) {
         this.items = items;
     }
 
@@ -13,30 +13,23 @@ public class GildedRoseRefactored {
         for (Item item : items) {
             if (item.name.equals("Aged Brie")
                 || item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
+                if (item.quality < 50 && item.name.equals("Aged Brie")) {
+                    item.quality = item.quality + 1;
+                }
+            }
 
-                        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                            if (item.sellIn < 11) {
-                                if (item.quality < 50) {
-                                    item.quality = item.quality + 1;
-                                }
-                            }
 
-                            if (item.sellIn < 6) {
-                                if (item.quality < 50) {
-                                    item.quality = item.quality + 1;
-                                }
-                            }
-                        }
-                    }
-                } else {
+            else {
                 if (item.quality > 0) {
                     if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
                     } else {
                         item.quality = item.quality - 1;
                     }
                 }
+            }
+
+            if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                updateBackstage(item);
             }
 
             if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
@@ -64,4 +57,24 @@ public class GildedRoseRefactored {
             }
         }
     }
+
+    private void updateBackstage(final Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+        }
+
+        if (item.sellIn < 11) {
+            if (item.quality < 50) {
+                item.quality = item.quality + 1;
+            }
+        }
+
+        if (item.sellIn < 6) {
+            if (item.quality < 50) {
+                item.quality = item.quality + 1;
+            }
+        }
+    }
+
+
 }
