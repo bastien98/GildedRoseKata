@@ -37,3 +37,5 @@ bin/
 ### Mac OS ###
 .DS_Store
 .idea/
+/src/test/resources/goldenmaster.txt
+/src/test/resources/goldenmasterV1.txt
