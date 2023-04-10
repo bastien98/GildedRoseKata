@@ -11,29 +11,21 @@ public class GildedRoseRefactored {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (item.name.equals("Aged Brie")
-                || item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (item.quality < 50 && item.name.equals("Aged Brie")) {
+            if (item.name.equals("Aged Brie")) {
+                if (item.quality < 50) {
                     item.quality = item.quality + 1;
                 }
             }
 
-
-            else {
-                if (item.quality > 0) {
-                    if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                    } else {
-                        item.quality = item.quality - 1;
-                    }
-                }
+            if(item.quality >0 && !item.name.equals("Sulfuras, Hand of Ragnaros") && !item.name.equals("Backstage passes to a TAFKAL80ETC concert") && !item.name.equals("Aged Brie") ) {
+                item.quality = item.quality - 1;
             }
 
             if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 updateBackstage(item);
             }
 
-            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            } else {
+            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
                 item.sellIn = item.sellIn - 1;
             }
 
