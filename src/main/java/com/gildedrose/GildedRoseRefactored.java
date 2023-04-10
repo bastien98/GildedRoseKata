@@ -4,78 +4,83 @@ import java.util.List;
 
 public class GildedRoseRefactored {
 
+    private static final int MINIMUM_ITEM_QUALITY = 0;
+    private static final int MAXIMUM_ITEM_QUALITY = 50;
 
     private final List<Item> items;
+
 
     public GildedRoseRefactored(List<Item> items) {
         this.items = items;
     }
 
     public void updateQuality() {
+
         for (Item item : items) {
-
-            switch (item.name) {
-                case "Aged Brie":
+            if ("Sulfuras, Hand of Ragnaros".equals(item.name)) {
+                // Do Nothing
+            } else {
+                item.sellIn = item.sellIn - 1;
+                if (isNormalItem(item)) {
+                    updateNormalItem(item);
+                }
+                if ("Aged Brie".equals(item.name)) {
                     udpateAgedBrie(item);
-                    break;
-
-                case "Backstage passes to a TAFKAL80ETC concert":
+                }
+                if (isBackStageItem(item)) {
                     updateBackstage(item);
-                    break;
-
-                case "Sulfuras, Hand of Ragnaros":
-                    // Do Nothing
-                    break;
-
-                default:
-                    updateDefaultItem(item);
-
+                }
             }
         }
     }
 
     private void updateBackstage(Item item) {
-        item.sellIn = item.sellIn - 1;
-        if (item.quality < 50) {
+        if (item.quality < MAXIMUM_ITEM_QUALITY) {
             item.quality = item.quality + 1;
         }
 
-        if (item.sellIn +1 < 11) {
-            if (item.quality < 50) {
+        if (item.sellIn < 10) {
+            if (item.quality < MAXIMUM_ITEM_QUALITY) {
                 item.quality = item.quality + 1;
             }
         }
 
-        if (item.sellIn +1 < 6) {
-            if (item.quality < 50) {
+        if (item.sellIn < 5) {
+            if (item.quality < MAXIMUM_ITEM_QUALITY) {
                 item.quality = item.quality + 1;
             }
         }
 
         if (item.sellIn < 0) {
-            item.quality = 0;
+            item.quality = MINIMUM_ITEM_QUALITY;
         }
     }
 
-    private void updateDefaultItem(Item item) {
-        item.sellIn = item.sellIn - 1;
-        if(item.quality >0) {
+    private boolean isNormalItem(Item item) {
+        return !"Sulfuras, Hand of Ragnaros".equals(item.name) && !"Aged Brie".equals(item.name) && !"Backstage passes to a TAFKAL80ETC concert".equals(item.name);
+    }
+
+    private void updateNormalItem(Item item) {
+        if (item.quality > MINIMUM_ITEM_QUALITY) {
             item.quality = item.quality - 1;
         }
 
-        if (item.sellIn < 0 && item.quality > 0) {
+        if (item.sellIn < 0 && item.quality > MINIMUM_ITEM_QUALITY) {
             item.quality = item.quality - 1;
         }
     }
 
     private void udpateAgedBrie(Item item) {
-        item.sellIn = item.sellIn - 1;
-        if (item.quality < 50) {
+        if (item.quality < MAXIMUM_ITEM_QUALITY) {
             item.quality = item.quality + 1;
         }
-        if (item.quality < 50 && item.sellIn < 0) {
+        if (item.quality < MAXIMUM_ITEM_QUALITY && item.sellIn < 0) {
             item.quality = item.quality + 1;
         }
     }
 
+    private boolean isBackStageItem(Item item) {
+        String subString = "Backstage passes";
+        return item.name.contains(subString);
+    }
 }
