@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import com.gildedrose.domain.Item;
+import com.gildedrose.services.ItemShopService;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,7 +30,7 @@ public class CreateGoldenMasterFileV1 {
         items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 6, 49));
         items.add(new Item("Test Item", 5, 49));
 
-        GildedRoseRefactored app = new GildedRoseRefactored(items);
+        ItemShopService app = new ItemShopService(items);
 
         int days = 2;
         if (args.length > 0) {

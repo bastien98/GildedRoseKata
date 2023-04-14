@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import com.gildedrose.domain.Item;
+import com.gildedrose.services.GildedRose;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 

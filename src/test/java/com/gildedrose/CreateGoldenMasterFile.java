@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import com.gildedrose.domain.Item;
+import com.gildedrose.services.GildedRose;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
