@@ -2,11 +2,12 @@ package com.gildedrose;
 
 import com.gildedrose.domain.Item;
 import com.gildedrose.services.GildedRose;
-import org.apache.commons.io.FileUtils;
+import com.gildedrose.services.GildedRoseRefactored;
+import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,19 +22,36 @@ class GildedRoseTest {
     }
 
     @Test
-    void goldenMasterTest() throws IOException {
-        String[] days = new String[1];
-        days[0] = "10";
-        String goldenmasterFilePath = CreateGoldenMasterFile.FILENAME;
-        File goldenmaster = new File(goldenmasterFilePath);
-        String goldenmasterV1FilePath = CreateGoldenMasterFileV1.FILENAME;
-        File goldenmasterV1 = new File(goldenmasterV1FilePath);
+    void abc() {
 
-        CreateGoldenMasterFile.main(days);
-        CreateGoldenMasterFileV1.main(days);
+        // Given
+        String[] nameCombos = {
+            "+5 Dexterity Vest",
+            "Aged Brie",
+            "Elixir of the Mongoose",
+            "Sulfuras, Hand of Ragnaros",
+            "Backstage passes to a TAFKAL80ETC concert"};
 
-        assertEquals(FileUtils.readFileToString(goldenmaster, "utf-8"),
-            FileUtils.readFileToString(goldenmasterV1, "utf-8"));
+        Integer[] sellInCombos = {-1, 0, 5, 6, 7, 10, 11, 12};
+
+        Integer[] qualityCombos = {-1, 0, 1, 49, 50};
+
+        // When + Then
+        CombinationApprovals.verifyAllCombinations(
+            this::updateItemQuality,
+            nameCombos,
+            sellInCombos,
+            qualityCombos
+        );
     }
+
+    private String updateItemQuality(String name, int sellIn, int quality) {
+        List<Item> items = new ArrayList<>();
+        items.add(new Item(name, sellIn, quality));
+        GildedRoseRefactored gildedRoseRefactored = new GildedRoseRefactored(items);
+        gildedRoseRefactored.updateQuality();
+        return gildedRoseRefactored.items.get(0).toString();
+    }
+
 
 }

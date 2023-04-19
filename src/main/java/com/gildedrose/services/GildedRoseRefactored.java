@@ -4,16 +4,15 @@ import com.gildedrose.domain.Item;
 
 import java.util.List;
 
-// TODO test refactoren + extra test voor backstage passes te testen + extra feature toevoegen
-public class ItemShopService {
+public class GildedRoseRefactored {
 
     private static final int MINIMUM_ITEM_QUALITY = 0;
     private static final int MAXIMUM_ITEM_QUALITY = 50;
 
-    private final List<Item> items;
+    public final List<Item> items;
 
 
-    public ItemShopService(List<Item> items) {
+    public GildedRoseRefactored(List<Item> items) {
         this.items = items;
     }
 
@@ -34,9 +33,6 @@ public class ItemShopService {
         }
     }
 
-    private void validateItems(List<Item> items) {
-
-    }
     private void updateNormalItem(Item item) {
         item.sellIn = item.sellIn - 1;
         if (item.quality > MINIMUM_ITEM_QUALITY) {
@@ -47,18 +43,15 @@ public class ItemShopService {
             item.quality = item.quality - 1;
         }
 
-//        //TODO testcase maken voor deze statement
-//        if (item.quality > MAXIMUM_ITEM_QUALITY) {
-//            item.quality = MAXIMUM_ITEM_QUALITY;
-//        }
     }
+
     private void udpateAgedBrie(Item item) {
         item.sellIn = item.sellIn - 1;
-        if (item.quality < MAXIMUM_ITEM_QUALITY && item.sellIn >= 0) {
+        if (item.quality < MAXIMUM_ITEM_QUALITY) {
             item.quality = item.quality + 1;
         }
         if (item.quality < MAXIMUM_ITEM_QUALITY && item.sellIn < 0) {
-            item.quality = item.quality + 2;
+            item.quality = item.quality + 1;
         }
     }
 
@@ -88,6 +81,7 @@ public class ItemShopService {
     private boolean isNormalItem(Item item) {
         return !"Sulfuras, Hand of Ragnaros".equals(item.name) && !"Aged Brie".equals(item.name) && !isBackStageItem(item);
     }
+
     private boolean isBackStageItem(Item item) {
         String subString = "Backstage passes";
         return item.name.contains(subString);
