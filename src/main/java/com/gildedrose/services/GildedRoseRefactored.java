@@ -9,10 +9,7 @@ import java.util.List;
 
 public class GildedRoseRefactored {
 
-
-
     public List<SpecializedItem> items = new ArrayList<>();
-
 
     public GildedRoseRefactored(List<Item> items) {
 
@@ -22,11 +19,8 @@ public class GildedRoseRefactored {
     }
 
     public void updateQuality() {
-        List<SpecializedItem> newList = new ArrayList<>();
-        for (SpecializedItem item : items) {
-            item.updateItem();
-            newList.add(item);
+        for (int i = 0; i < items.size(); i++) {
+            items.get(i).updateItem();
         }
-        items = newList;
     }
 }
