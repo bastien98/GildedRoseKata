@@ -3,7 +3,7 @@ package com.gildedrose.domain;
 import static com.gildedrose.services.GildedRoseRefactored.MAXIMUM_ITEM_QUALITY;
 import static com.gildedrose.services.GildedRoseRefactored.MINIMUM_ITEM_QUALITY;
 
-public class BackStagePass extends Item{
+public class BackStagePass extends Item implements SpecializedItem {
 
     public BackStagePass(final String name, final int sellIn, final int quality) {
         super(name, sellIn, quality);
