@@ -3,9 +3,6 @@ package com.gildedrose.domain;
 public class ItemFactory {
     public static SpecializedItem createSpecializedItem(Item item) {
 
-        if (isNormalItem(item.name)) {
-            return new NormalItem(item);
-        }
         if (isBackStageItem(item.name)) {
             return new BackStagePass(item);
         }
@@ -17,15 +14,8 @@ public class ItemFactory {
         }
         if (isConjuredItem(item.name)) {
             return new ConjuredItem(item);
-        } else {
-            return null;
         }
-    }
-
-    private static boolean isNormalItem(String itemName) {
-        return !"Sulfuras, Hand of Ragnaros".equals(itemName) &&
-            !"Aged Brie".equals(itemName) &&
-            !isBackStageItem(itemName);
+         return new NormalItem(item);
     }
 
     private static boolean isBackStageItem(String itemName) {

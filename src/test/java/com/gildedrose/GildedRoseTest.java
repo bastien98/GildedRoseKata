@@ -12,7 +12,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
-
     @Test
     void orignalTest() {
         Item[] items = new Item[]{new Item("foo", 0, 0)};
@@ -23,7 +22,6 @@ class GildedRoseTest {
 
     @Test
     void gildedRose_ApprovalTest() {
-
         // Given
         String[] nameCombos = {
             "+5 Dexterity Vest",
@@ -31,9 +29,10 @@ class GildedRoseTest {
             "Elixir of the Mongoose",
             "Sulfuras, Hand of Ragnaros",
             "Backstage passes to a TAFKAL80ETC concert",
+            "Conjured item",
         };
-        Integer[] sellInCombos = {-1, 0, 1, 5, 6, 7, 10, 11, 12};
-        Integer[] qualityCombos = {0, 1, 49, 50};
+        Integer[] sellInCombos = {-1, 0, 1, 4, 5, 6, 7, 9, 10, 11};
+        Integer[] qualityCombos = {0, 1, 25, 49, 50};
 
         // When + Then
         CombinationApprovals.verifyAllCombinations(
@@ -44,18 +43,11 @@ class GildedRoseTest {
         );
     }
 
-
     private String updateItemQuality(String name, int sellIn, int quality) {
         List<Item> items = new ArrayList<>();
         items.add(new Item(name, sellIn, quality));
         GildedRoseRefactored gildedRoseRefactored = new GildedRoseRefactored(items);
         gildedRoseRefactored.updateQuality();
         return gildedRoseRefactored.items.get(0).toString();
-//        Item[] items = new Item[] {new Item(name, sellIn, quality)};
-//        GildedRose gildedRose = new GildedRose(items);
-//        gildedRose.updateQuality();
-//        return gildedRose.items[0].toString();
     }
-
-
 }
