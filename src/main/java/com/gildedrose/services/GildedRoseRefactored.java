@@ -1,81 +1,54 @@
 package com.gildedrose.services;
 
+import com.gildedrose.domain.AgedBrie;
+import com.gildedrose.domain.BackStagePass;
 import com.gildedrose.domain.Item;
+import com.gildedrose.domain.Normal;
+import com.gildedrose.domain.Sulfuras;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GildedRoseRefactored {
 
-    private static final int MINIMUM_ITEM_QUALITY = 0;
-    private static final int MAXIMUM_ITEM_QUALITY = 50;
+    public static final int MINIMUM_ITEM_QUALITY = 0;
+    public static final int MAXIMUM_ITEM_QUALITY = 50;
 
-    public final List<Item> items;
+    public  List<Item> items;
 
 
     public GildedRoseRefactored(List<Item> items) {
+
         this.items = items;
     }
 
     public void updateQuality() {
+        List<Item> newList = new ArrayList<>();
         for (Item item : items) {
             if (isNormalItem(item)) {
-                updateNormalItem(item);
+                Normal item1 = new Normal(item.name, item.sellIn, item.quality);
+                item1.updateItem();
+                newList.add(item1);
             }
             if ("Aged Brie".equals(item.name)) {
-                udpateAgedBrie(item);
+                AgedBrie item1 = new AgedBrie(item.name, item.sellIn, item.quality);
+                item1.updateItem();
+                newList.add(item1);
+
             }
             if ("Sulfuras, Hand of Ragnaros".equals(item.name)) {
                 // Do Nothing (Legendary Item)
+                Sulfuras item1 = new Sulfuras(item.name, item.sellIn, item.quality);
+                newList.add(item1);
             }
             if (isBackStageItem(item)) {
-                updateBackstage(item);
+                BackStagePass item1 = new BackStagePass(item.name, item.sellIn, item.quality);
+                item1.updateItem();
+                newList.add(item1);
             }
-        }
-    }
 
-    private void updateNormalItem(Item item) {
-        item.sellIn = item.sellIn - 1;
-        if (item.quality > MINIMUM_ITEM_QUALITY) {
-            item.quality = item.quality - 1;
         }
-
-        if (item.sellIn < 0 && item.quality > MINIMUM_ITEM_QUALITY) {
-            item.quality = item.quality - 1;
-        }
-
-    }
-
-    private void udpateAgedBrie(Item item) {
-        item.sellIn = item.sellIn - 1;
-        if (item.quality < MAXIMUM_ITEM_QUALITY) {
-            item.quality = item.quality + 1;
-        }
-        if (item.quality < MAXIMUM_ITEM_QUALITY && item.sellIn < 0) {
-            item.quality = item.quality + 1;
-        }
-    }
-
-    private void updateBackstage(Item item) {
-        item.sellIn = item.sellIn - 1;
-        if (item.quality < MAXIMUM_ITEM_QUALITY) {
-            item.quality = item.quality + 1;
-        }
-
-        if (item.sellIn < 10) {
-            if (item.quality < MAXIMUM_ITEM_QUALITY) {
-                item.quality = item.quality + 1;
-            }
-        }
-
-        if (item.sellIn < 5) {
-            if (item.quality < MAXIMUM_ITEM_QUALITY) {
-                item.quality = item.quality + 1;
-            }
-        }
-
-        if (item.sellIn < 0) {
-            item.quality = MINIMUM_ITEM_QUALITY;
-        }
+        items = newList;
     }
 
     private boolean isNormalItem(Item item) {

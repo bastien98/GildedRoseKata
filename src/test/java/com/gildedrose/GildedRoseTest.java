@@ -32,7 +32,7 @@ class GildedRoseTest {
             "Sulfuras, Hand of Ragnaros",
             "Backstage passes to a TAFKAL80ETC concert"};
 
-        Integer[] sellInCombos = {-1, 0, 5, 6, 7, 10, 11, 12};
+        Integer[] sellInCombos = {-1, 0,1, 5, 6, 7, 10, 11, 12};
 
         Integer[] qualityCombos = {-1, 0, 1, 49, 50};
 
