@@ -22,7 +22,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void abc() {
+    void gildedRose_ApprovalTest() {
 
         // Given
         String[] nameCombos = {

@@ -9,13 +9,13 @@ public class NormalItem extends Item implements SpecializedItem {
     }
 
     public void updateItem() {
-        this.sellIn = this.sellIn - 1;
+        this.sellIn--;
         if (this.quality > MINIMUM_ITEM_QUALITY) {
-            this.quality = this.quality - 1;
+            this.quality--;
         }
 
         if (this.sellIn < 0 && this.quality > MINIMUM_ITEM_QUALITY) {
-            this.quality = this.quality - 1;
+            this.quality--;
         }
     }
 }
