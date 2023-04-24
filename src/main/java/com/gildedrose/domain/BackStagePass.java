@@ -8,6 +8,7 @@ public class BackStagePass extends Item implements SpecializedItem {
     public BackStagePass(Item item) {
         super(item.name, item.sellIn, item.quality);
     }
+
     public void updateItem() {
         this.sellIn--;
 
@@ -16,7 +17,7 @@ public class BackStagePass extends Item implements SpecializedItem {
         }
 
         if (this.sellIn < 10 && this.quality < MAXIMUM_ITEM_QUALITY) {
-            this.quality ++;
+            this.quality++;
         }
 
         if (this.sellIn < 5 && this.quality < MAXIMUM_ITEM_QUALITY) {

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
     @Test
-    void orignalTest() {
+    void originalTest() {
         Item[] items = new Item[]{new Item("foo", 0, 0)};
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -27,7 +27,6 @@ class GildedRoseTest {
             "+5 Dexterity Vest",
             "Aged Brie",
             "Elixir of the Mongoose",
-            "Sulfuras, Hand of Ragnaros",
             "Backstage passes to a TAFKAL80ETC concert",
             "Conjured item",
         };
@@ -38,6 +37,24 @@ class GildedRoseTest {
         CombinationApprovals.verifyAllCombinations(
             this::updateItemQuality,
             nameCombos,
+            sellInCombos,
+            qualityCombos
+        );
+    }
+
+    @Test
+    void sulfuras_ApprovalTest() {
+        // Given
+        String[] sulfuras = {
+            "Sulfuras, Hand of Ragnaros",
+        };
+        Integer[] sellInCombos = {-1, 0, 1, 4, 5, 6, 7, 9, 10, 11};
+        Integer[] qualityCombos = {80};
+
+        // When + Then
+        CombinationApprovals.verifyAllCombinations(
+            this::updateItemQuality,
+            sulfuras,
             sellInCombos,
             qualityCombos
         );

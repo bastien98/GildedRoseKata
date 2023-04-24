@@ -15,7 +15,7 @@ public class ItemFactory {
         if (isConjuredItem(item.name)) {
             return new ConjuredItem(item);
         }
-         return new NormalItem(item);
+        return new NormalItem(item);
     }
 
     private static boolean isBackStageItem(String itemName) {
