@@ -1,22 +1,22 @@
 package com.gildedrose.domain;
 
-
 import static com.gildedrose.domain.ItemConfig.MINIMUM_ITEM_QUALITY;
 
-public class NormalItem extends Item implements SpecializedItem {
+public class ConjuredItem extends Item implements SpecializedItem{
 
-    public NormalItem(Item item) {
+    public ConjuredItem(Item item) {
         super(item.name, item.sellIn, item.quality);
     }
 
+    @Override
     public void updateItem() {
         this.sellIn--;
         if (this.quality > MINIMUM_ITEM_QUALITY) {
-            this.quality--;
+            this.quality = this.quality -2;
         }
 
         if (this.sellIn < 0 && this.quality > MINIMUM_ITEM_QUALITY) {
-            this.quality--;
+            this.quality = this.quality - 4;
         }
     }
 }

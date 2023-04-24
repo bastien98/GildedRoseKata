@@ -1,8 +1,8 @@
 package com.gildedrose.domain;
 
 public class Sulfuras extends Item implements SpecializedItem {
-    public Sulfuras(final String name, final int sellIn, final int quality) {
-        super(name, sellIn, quality);
+    public Sulfuras(Item item) {
+        super(item.name, item.sellIn, item.quality);
     }
 
     @Override

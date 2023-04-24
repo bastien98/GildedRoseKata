@@ -5,11 +5,9 @@ import static com.gildedrose.domain.ItemConfig.MAXIMUM_ITEM_QUALITY;
 import static com.gildedrose.domain.ItemConfig.MINIMUM_ITEM_QUALITY;
 
 public class BackStagePass extends Item implements SpecializedItem {
-
-    public BackStagePass(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+    public BackStagePass(Item item) {
+        super(item.name, item.sellIn, item.quality);
     }
-
     public void updateItem() {
         this.sellIn--;
 
