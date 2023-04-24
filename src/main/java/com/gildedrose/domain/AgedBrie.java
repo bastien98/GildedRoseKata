@@ -1,7 +1,7 @@
 package com.gildedrose.domain;
 
 
-import static com.gildedrose.services.GildedRoseRefactored.MAXIMUM_ITEM_QUALITY;
+import static com.gildedrose.domain.ItemConfig.MAXIMUM_ITEM_QUALITY;
 
 public class AgedBrie extends Item implements SpecializedItem {
 
