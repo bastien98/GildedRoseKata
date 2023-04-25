@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 import com.gildedrose.domain.Item;
+import com.gildedrose.domain.ItemConfig;
 import com.gildedrose.services.GildedRose;
 import com.gildedrose.services.GildedRoseRefactored;
 import org.approvaltests.combinations.CombinationApprovals;
@@ -46,7 +47,7 @@ class GildedRoseTest {
     void sulfuras_ApprovalTest() {
         // Given
         String[] sulfuras = {
-            "Sulfuras, Hand of Ragnaros",
+            ItemConfig.ITEM_TYPE_SULFURAS,
         };
         Integer[] sellInCombos = {-1, 0, 1, 4, 5, 6, 7, 9, 10, 11};
         Integer[] qualityCombos = {80};
