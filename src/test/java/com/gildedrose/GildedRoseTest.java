@@ -1,7 +1,6 @@
 package com.gildedrose;
 
 import com.gildedrose.domain.Item;
-import com.gildedrose.domain.ItemConfig;
 import com.gildedrose.services.GildedRose;
 import com.gildedrose.services.GildedRoseRefactored;
 import org.approvaltests.combinations.CombinationApprovals;
@@ -22,9 +21,9 @@ class GildedRoseTest {
     }
 
     @Test
-    void gildedRose_ApprovalTest() {
+    void gildedRoseRefactored_ApprovalTest() {
         // Given
-        String[] nameCombos = {
+        String[] itemNames = {
             "+5 Dexterity Vest",
             "Aged Brie",
             "Elixir of the Mongoose",
@@ -37,7 +36,7 @@ class GildedRoseTest {
         // When + Then
         CombinationApprovals.verifyAllCombinations(
             this::updateItemQuality,
-            nameCombos,
+            itemNames,
             sellInCombos,
             qualityCombos
         );
@@ -47,7 +46,7 @@ class GildedRoseTest {
     void sulfuras_ApprovalTest() {
         // Given
         String[] sulfuras = {
-            ItemConfig.ITEM_TYPE_SULFURAS,
+            "Sulfuras, Hand of Ragnaros",
         };
         Integer[] sellInCombos = {-1, 0, 1, 4, 5, 6, 7, 9, 10, 11};
         Integer[] qualityCombos = {80};
