@@ -66,6 +66,6 @@ class GildedRoseTest {
         items.add(new Item(name, sellIn, quality));
         GildedRoseRefactored gildedRoseRefactored = new GildedRoseRefactored(items);
         gildedRoseRefactored.updateQuality();
-        return gildedRoseRefactored.items.get(0).toString();
+        return gildedRoseRefactored.getItems().get(0).toString();
     }
 }

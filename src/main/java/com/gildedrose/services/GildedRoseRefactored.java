@@ -21,4 +21,8 @@ public class GildedRoseRefactored {
             items.get(i).updateItem();
         }
     }
+
+    public List<SpecializedItem> getItems() {
+        return items;
+    }
 }
