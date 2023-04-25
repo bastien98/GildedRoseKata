@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GildedRoseRefactored {
-    public List<SpecializedItem> items;
+    private final List<SpecializedItem> items;
 
     public GildedRoseRefactored(List<Item> items) {
         this.items = new ArrayList<>();
