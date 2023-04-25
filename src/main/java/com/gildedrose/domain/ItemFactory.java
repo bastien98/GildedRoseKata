@@ -6,10 +6,10 @@ public class ItemFactory {
         if (isBackStageItem(item.name)) {
             return new BackStagePass(item);
         }
-        if ("Aged Brie".equals(item.name)) {
+        if (ItemConfig.ITEM_TYPE_AGED_BRIE.equals(item.name)) {
             return new AgedBrie(item);
         }
-        if ("Sulfuras, Hand of Ragnaros".equals(item.name)) {
+        if (ItemConfig.ITEM_TYPE_SULFURAS.equals(item.name)) {
             return new Sulfuras(item);
         }
         if (isConjuredItem(item.name)) {
@@ -19,10 +19,10 @@ public class ItemFactory {
     }
 
     private static boolean isBackStageItem(String itemName) {
-        return itemName.startsWith("Backstage passes");
+        return itemName.startsWith(ItemConfig.ITEM_TYPE_BACKSTAGE_PASS);
     }
 
     private static boolean isConjuredItem(String itemName) {
-        return itemName.startsWith("Conjured");
+        return itemName.startsWith(ItemConfig.ITEM_TYPE_CONJURED);
     }
 }
