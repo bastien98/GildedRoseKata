@@ -1,6 +1,6 @@
 package com.gildedrose.domain;
 
-public class ItemFactory {
+public class UpdatableItemFactory {
     public static Updatable createUpdatableItem(Item item) {
 
         if (isBackStageItem(item.name)) {

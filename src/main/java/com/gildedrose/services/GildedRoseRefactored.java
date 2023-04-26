@@ -1,7 +1,7 @@
 package com.gildedrose.services;
 
 import com.gildedrose.domain.Item;
-import com.gildedrose.domain.ItemFactory;
+import com.gildedrose.domain.UpdatableItemFactory;
 import com.gildedrose.domain.Updatable;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class GildedRoseRefactored {
     public GildedRoseRefactored(List<Item> items) {
         this.items = new ArrayList<>();
         for (Item item : items) {
-            this.items.add(ItemFactory.createUpdatableItem(item));
+            this.items.add(UpdatableItemFactory.createUpdatableItem(item));
         }
     }
 
