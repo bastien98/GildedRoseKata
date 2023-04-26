@@ -64,7 +64,7 @@ class GildedRoseTest {
         List<Item> items = new ArrayList<>();
         items.add(new Item(name, sellIn, quality));
         GildedRoseRefactored gildedRoseRefactored = new GildedRoseRefactored(items);
-        gildedRoseRefactored.updateQuality();
+        gildedRoseRefactored.updateItems();
         return gildedRoseRefactored.getItems().get(0).toString();
     }
 }
