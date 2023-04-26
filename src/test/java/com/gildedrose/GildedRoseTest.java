@@ -35,7 +35,7 @@ class GildedRoseTest {
 
         // When + Then
         CombinationApprovals.verifyAllCombinations(
-            this::updateItemQuality,
+            this::updateItem,
             itemNames,
             sellInCombos,
             qualityCombos
@@ -53,14 +53,14 @@ class GildedRoseTest {
 
         // When + Then
         CombinationApprovals.verifyAllCombinations(
-            this::updateItemQuality,
+            this::updateItem,
             sulfuras,
             sellInCombos,
             qualityCombos
         );
     }
 
-    private String updateItemQuality(String name, int sellIn, int quality) {
+    private String updateItem(String name, int sellIn, int quality) {
         List<Item> items = new ArrayList<>();
         items.add(new Item(name, sellIn, quality));
         GildedRoseRefactored gildedRoseRefactored = new GildedRoseRefactored(items);
