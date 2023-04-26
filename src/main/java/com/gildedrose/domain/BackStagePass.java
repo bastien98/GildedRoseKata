@@ -4,12 +4,12 @@ package com.gildedrose.domain;
 import static com.gildedrose.domain.ItemConfig.MAXIMUM_ITEM_QUALITY;
 import static com.gildedrose.domain.ItemConfig.MINIMUM_ITEM_QUALITY;
 
-public class BackStagePass extends Item implements SpecializedItem {
+public class BackStagePass extends Item implements Updatable {
     public BackStagePass(Item item) {
         super(item.name, item.sellIn, item.quality);
     }
 
-    public void updateItem() {
+    public void update() {
         this.sellIn--;
 
         if (this.quality < MAXIMUM_ITEM_QUALITY) {

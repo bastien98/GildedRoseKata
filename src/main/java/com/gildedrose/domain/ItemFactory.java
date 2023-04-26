@@ -1,7 +1,7 @@
 package com.gildedrose.domain;
 
 public class ItemFactory {
-    public static SpecializedItem createSpecializedItem(Item item) {
+    public static Updatable createUpdatableItem(Item item) {
 
         if (isBackStageItem(item.name)) {
             return new BackStagePass(item);
