@@ -3,7 +3,7 @@ package com.gildedrose.domain;
 
 import static com.gildedrose.domain.ItemConfig.MAXIMUM_ITEM_QUALITY;
 
-public class AgedBrie extends Item implements Updatable {
+public class AgedBrie extends Item implements UpdatableItem {
 
     public AgedBrie(Item item) {
         super(item.name, item.sellIn, item.quality);

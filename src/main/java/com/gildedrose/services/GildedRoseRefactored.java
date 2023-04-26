@@ -2,18 +2,18 @@ package com.gildedrose.services;
 
 import com.gildedrose.domain.Item;
 import com.gildedrose.domain.UpdatableItemFactory;
-import com.gildedrose.domain.Updatable;
+import com.gildedrose.domain.UpdatableItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GildedRoseRefactored {
-    private final List<Updatable> items;
+    private final List<UpdatableItem> items;
 
     public GildedRoseRefactored(List<Item> items) {
         this.items = new ArrayList<>();
         for (Item item : items) {
-            this.items.add(UpdatableItemFactory.createUpdatableItem(item));
+            this.items.add(UpdatableItemFactory.create(item));
         }
     }
 
@@ -23,7 +23,7 @@ public class GildedRoseRefactored {
         }
     }
 
-    public List<Updatable> getItems() {
+    public List<UpdatableItem> getItems() {
         return items;
     }
 }

@@ -1,5 +1,5 @@
 package com.gildedrose.domain;
 
-public interface Updatable {
+public interface UpdatableItem {
     void update();
 }

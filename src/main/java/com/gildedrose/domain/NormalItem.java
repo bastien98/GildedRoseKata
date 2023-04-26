@@ -3,7 +3,7 @@ package com.gildedrose.domain;
 
 import static com.gildedrose.domain.ItemConfig.MINIMUM_ITEM_QUALITY;
 
-public class NormalItem extends Item implements Updatable {
+public class NormalItem extends Item implements UpdatableItem {
 
     public NormalItem(Item item) {
         super(item.name, item.sellIn, item.quality);
